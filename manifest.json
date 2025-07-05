@@ -1,0 +1,35 @@
+{
+  "dxt_version": "0.1",
+  "name": "spotify-mcp-server",
+  "version": "1.0.0",
+  "description": "Control Spotify from an LLM",
+  "author": {
+    "name": "Cole Bittel",
+    "url": "github:bittelc/spofity-mcp-server"
+  },
+  "server": {
+    "type": "binary",
+    "entry_point": "spotify-mcp-server",
+    "mcp_config": {
+      "command": "${__dirname}/golang-mcp-testing",
+      "args": [],
+      "env": {}
+    }
+  },
+  "tools": [
+    {
+      "name": "spotify_create_playlist",
+      "description": "Create an empty playlist"
+    }
+  ],
+  "user_config": {
+    "spotify_api_key": {
+      "type": "string",
+      "title": "spotify_api_key",
+      "description": "Your Spotify developer API key",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "license": "MIT"
+}
