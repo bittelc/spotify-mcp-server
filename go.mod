@@ -2,7 +2,10 @@ module spotify-mcp-server
 
 go 1.24.2
 
-require github.com/localrivet/gomcp v1.7.1
+require (
+	github.com/joho/godotenv v1.5.1
+	github.com/localrivet/gomcp v1.7.1
+)
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.5.0 // indirect

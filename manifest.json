@@ -1,32 +1,40 @@
 {
   "dxt_version": "0.1",
   "name": "spotify-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Control Spotify from an LLM",
   "author": {
     "name": "Cole Bittel",
-    "url": "github:bittelc/spofity-mcp-server"
+    "url": "github:bittelc/spotify-mcp-server"
   },
   "server": {
     "type": "binary",
     "entry_point": "spotify-mcp-server",
     "mcp_config": {
-      "command": "${__dirname}/golang-mcp-testing",
+      "command": "${__dirname}/spotify-mcp-server",
       "args": [],
-      "env": {}
+      "env": {
+        "SPOTIFY_CLIENT_ID": "${user_config.SPOTIFY_CLIENT_ID}",
+        "SPOTIFY_CLIENT_SECRET": "${user_config.spotify_client_secret}",
+        "SPOTIFY_REDIRECT_URI": "${user_config.SPOTIFY_REDIRECT_URI}"
+      }
     }
   },
   "tools": [
     {
       "name": "spotify_create_playlist",
       "description": "Create an empty playlist"
+    },
+    {
+      "name": "spotify_get_user",
+      "description": "Get user information and profile data"
     }
   ],
   "user_config": {
-    "spotify_api_key": {
+    "spotify_client_secret": {
       "type": "string",
-      "title": "spotify_api_key",
-      "description": "Your Spotify developer API key",
+      "title": "spotify_client_secret",
+      "description": "Your Spotify developer API key, called a client secret in Spotify Developer Apps",
       "required": true,
       "sensitive": true
     }
